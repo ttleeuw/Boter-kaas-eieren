@@ -88,15 +88,16 @@ public class Board {
 		String current = player.getShape();
 		
 		int height = 0;
-		boolean isColComplete = false;
+		boolean isColComplete = true;
 		width = 1;
 		
 		while (height < bord.length) {
-			
-			isColComplete = true;
 			if(!bord[height][width].equals(current)) {
 				isColComplete = false;
-				break;
+//				break;
+				if(width == 3) {
+					break;
+				}
 			}
 			height++;
 			if(height == bord.length - 1 && !isColComplete) {
@@ -104,20 +105,12 @@ public class Board {
 					height = 0;
 					width =+ 1;
 				}
-			if(isColComplete && height == bord.length - 1) {
+			if(isColComplete && (height == bord.length - 1)) {
 				return true;
-			}
+			}		
 		}
 		return false;
 	}
-			
-//			for (int width = 1; width < bord.length; width++) {
-//				height =- bord.length;
-//				if(!bord[height][width].equals(current)) {
-//					isColComplete = false;
-//					break;
-//				}
-//			}
 			
 	
 	public boolean checkRow(Player player) {
@@ -137,20 +130,8 @@ public class Board {
 			{
 				return true;
 			}
-			
 		}
-		return false;
-//		for (int i = 1; i < bord.length; i++) {
-//			if(bord[0][i].equals(player.getShape()) ) {
-//				for (int j = 0; j < bord.length; j++) {
-//					if(bord[i][j].equals(player.getShape())) {
-////						System.out.println(player.getName() + " heeft gewonnen");
-//						return true;
-//					}
-//				}
-//			}
-//		}
-//		return false;	
+		return false;	
 	}
 	
 	
